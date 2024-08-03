@@ -105,12 +105,44 @@ body {
     background-color: rgb(204, 41, 41);
 }
 
-.messageContainer{
+.messageContainer {
     display: none;
     flex-direction: row;
     align-items: center;
 
 }
-.message{
+
+.message {
     margin-left: 5px;
+}
+
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 600px) {
+    body {
+        background: #44318D;
+
+    }
+
+    .mainContainer {
+        background-color: olive;
+        flex-direction: column;
+    }
+
+    .pinGenContainer {
+        padding: 20px;
+        height: fit-content;
+        background: #44318D;
+
+    }
+
+    .verticalLine {
+        border: 1px solid white;
+        height: 0px;
+        width: 100vw;
+        margin: 0px;
+    }
+
+    .enteredPinContainer {
+        height: fit-content;
+    }
 }
