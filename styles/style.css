@@ -1,6 +1,7 @@
 body {
     margin: 0px;
-    padding: 0px;
+    padding: 30px;
+    background-color: #d9a41c;
 }
 
 .mainContainer {
@@ -20,6 +21,7 @@ body {
     flex: 1;
     height: 100vh;
     flex-direction: column;
+    border-radius:10px 0px  0px 10px;
 }
 
 .generatePinBtn {
@@ -54,6 +56,8 @@ body {
     background: #44318D;
     display: flex;
     justify-content: center;
+    border-radius:0px 10px  10px 0px;
+
 }
 
 .enteredPinDispContainer {
@@ -120,11 +124,11 @@ body {
 @media screen and (max-width: 600px) {
     body {
         background: #44318D;
+        padding: 0px;
 
     }
 
-    .mainContainer {
-        background-color: olive;
+    .mainContainer {        
         flex-direction: column;
     }
 
@@ -132,6 +136,7 @@ body {
         padding: 20px;
         height: fit-content;
         background: #44318D;
+        border-radius:  0px;
 
     }
 
@@ -144,5 +149,6 @@ body {
 
     .enteredPinContainer {
         height: fit-content;
+        border-radius:  0px;
     }
 }
