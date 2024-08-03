@@ -14,10 +14,11 @@
         <div class="mainContainer">
             <div class="pinGenContainer centeredItems">
                 <div>
-                    <p class="generatePinBtn centeredItems">Generate <br> Secret Key</button>
-                        <p class="generatedPin centeredItems">123456</p>
+                    <button onclick="generateSecretPin()" class="generatePinBtn centeredItems">Generate <br> Secret
+                        Key</button>
+                    <p id="generatedPin" class="generatedPin centeredItems">123456</p>
                 </div>
-                
+
             </div>
             <hr class="verticalLine" />
             <div class="enteredPinContainer centeredItems">
@@ -49,5 +50,20 @@
 
     </main>
 </body>
+<script>
+    let generatedSecretPin;
+    function generateSecretPin() {
+        let generatedPin = getRandomSixDigit();
+        if (generatedPin.toString().length != 6)
+            generateSecretPin();
+        else
+           { generatedSecretPin = generatedPin;
+            document.getElementById("generatedPin").innerText = generatedSecretPin;
+           }
+    }
+    function getRandomSixDigit() {
+        return Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
+    }
+</script>
 
 </html>
