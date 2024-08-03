@@ -104,3 +104,13 @@ body {
 .clear {
     background-color: rgb(204, 41, 41);
 }
+
+.messageContainer{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+
+}
+.message{
+    margin-left: 5px;
+}

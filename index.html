@@ -16,7 +16,7 @@
                 <div>
                     <button onclick="generateSecretPin()" class="generatePinBtn centeredItems">Generate <br> Secret
                         Key</button>
-                    <p id="generatedPin" class="generatedPin centeredItems">123456</p>
+                    <p id="generatedPin" class="generatedPin centeredItems"></p>
                 </div>
 
             </div>
@@ -26,24 +26,31 @@
 
                     <div class="enteredPinDispContainer">
                         <p>Enter PIN:</p>
-                        <p id="enteredPinDisp" class="enteredPinDisp centeredItems">123456</p>
+                        <p id="enteredPinDisp" class="enteredPinDisp centeredItems"></p>
                     </div>
-                    <div class="pinKeypadContainer">
-                        <div class="keypadKeyCommon">1</div>
-                        <div class="keypadKeyCommon">2</div>
-                        <div class="keypadKeyCommon">3</div>
-                        <div class="keypadKeyCommon">4</div>
-                        <div class="keypadKeyCommon">5</div>
-                        <div class="keypadKeyCommon">6</div>
-                        <div class="keypadKeyCommon">7</div>
-                        <div class="keypadKeyCommon">8</div>
-                        <div class="keypadKeyCommon">9</div>
-                        <div class="keypadKeyCommon">0</div>
-                        <div class="keypadKeyCommon erase">X</div>
-                        <div class="keypadKeyCommon submit">Submit</div>
-                        <div class="keypadKeyCommon clear">Clear</div>
+                    <div id="keypadContainer" class="pinKeypadContainer">
+                        <div id="keypadKey1" class="keypadKeyCommon">1</div>
+                        <div id="keypadKey2" class="keypadKeyCommon">2</div>
+                        <div id="keypadKey3" class="keypadKeyCommon">3</div>
+                        <div id="keypadKey4" class="keypadKeyCommon">4</div>
+                        <div id="keypadKey5" class="keypadKeyCommon">5</div>
+                        <div id="keypadKey6" class="keypadKeyCommon">6</div>
+                        <div id="keypadKey7" class="keypadKeyCommon">7</div>
+                        <div id="keypadKey8" class="keypadKeyCommon">8</div>
+                        <div id="keypadKey9" class="keypadKeyCommon">9</div>
+                        <div id="keypadKey0" class="keypadKeyCommon">0</div>
+                        <div id="keypadKeyErase" class="keypadKeyCommon erase">X</div>
+                        <div id="keypadKeySubmit" class="keypadKeyCommon submit">Submit</div>
+                        <div id="keypadKeyClear" class="keypadKeyCommon clear">Clear</div>
                     </div>
-
+                    <div id="successfulContainer" class="messageContainer">
+                        <img height="20" width="20" src="./images/accept.png" />
+                        <p class="message">Secret key matched successfully.</p>
+                    </div>
+                    <div id="failedContainer" class="messageContainer">
+                        <img height="20" width="20" src="./images/warning.png" />
+                        <p class="message">Secret key not matched.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,14 +63,65 @@
         let generatedPin = getRandomSixDigit();
         if (generatedPin.toString().length != 6)
             generateSecretPin();
-        else
-           { generatedSecretPin = generatedPin;
+        else {
+            generatedSecretPin = generatedPin;
             document.getElementById("generatedPin").innerText = generatedSecretPin;
-           }
+        }
     }
     function getRandomSixDigit() {
         return Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
     }
+
+    const enteredPinPreview = document.getElementById("enteredPinDisp");
+
+    for (const item of document.getElementById("keypadContainer").getElementsByTagName("div")) {
+        item.addEventListener('click', function (event) {
+            if (enteredPinPreview != null) {
+
+                if (event.target.innerText === "Submit") {
+
+                    let enteredPin = Number(enteredPinPreview.innerText);
+
+
+                    if (typeof generatedSecretPin === 'undefined') {
+                        alert("Please generate secret key first!");
+                        return;
+                    }
+                    if (enteredPin === 0) {
+                        alert("Please enter secret key!");
+                        return;
+                    }
+                    if (enteredPin == generatedSecretPin) {
+                        document.getElementById("successfulContainer").style.display = "flex";
+                        document.getElementById("failedContainer").style.display = "none";
+                    }
+                    else {
+                        document.getElementById("successfulContainer").style.display = "none";
+                        document.getElementById("failedContainer").style.display = "flex";
+                    }
+
+                }
+                else if (event.target.innerText === "X") {
+                    let length = enteredPinPreview.innerText.length;
+                    if (length > 0) {
+                        enteredPinPreview.innerText = enteredPinPreview.innerText.substring(0, length - 1);
+                    }
+                }
+                else if (event.target.innerText === "Clear") {
+                    enteredPinPreview.innerText = "";
+                }
+                else {
+                    if (enteredPinPreview.innerText.length < 6) {
+                        enteredPinPreview.innerText = enteredPinPreview.innerText + event.target.innerText;
+                    }
+                }
+            }
+        });
+
+    }
+
+
+
 </script>
 
 </html>
