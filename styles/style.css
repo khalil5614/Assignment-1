@@ -1,69 +1,75 @@
-body{
+body {
     margin: 0px;
     padding: 0px;
 }
-.mainContainer{
+
+.mainContainer {
     display: flex;
     flex-direction: row;
+    color: white;
 }
 
-.centeredItems{
+.centeredItems {
     display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
-.pinGenContainer{
-    background: red;
-flex:1 ;  
-height: 100vh;
-flex-direction: column;
+.pinGenContainer {
+    background: #33266E;
+    flex: 1;
+    height: 100vh;
+    flex-direction: column;
 }
 
-.generatePinBtn{
-    height: 40px;
+.generatePinBtn {
     width: 200px;
-}
-
-.generatedPin{
-    height: 40px;
-    width: 200px;
+    padding: 10px 0;
     text-align: center;
     border-radius: 5px;
-    border: 1px inset blueviolet;
-    margin-left: auto;
-    margin-right: auto;
+    background-color: rgb(196, 28, 218);
 }
 
-.verticalLine{
+.generatedPin {
+    height: 40px;
+    width: 200px;
+    border-radius: 5px;
+    border: 2px solid white;
+    background-color: #3c2e76;
+    color: white;
+}
+
+.verticalLine {
     margin-top: 0%;
-    border: 1px inset blueviolet;
-   height: 100vh;
-   width: 0px;
+    border: 1px solid white;
+    height: 100vh;
+    width: 0px;
 }
-.enteredPinContainer{
-   height: 100vh;
-   flex:1 ;  
-background: blue;
-display: flex;
 
-justify-content: center;
+.enteredPinContainer {
+    height: 100vh;
+    flex: 1;
+    background: #44318D;
+    display: flex;
+    justify-content: center;
 }
-.enteredPinDispContainer{
+
+.enteredPinDispContainer {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
-.enteredPinDisp{
+
+.enteredPinDisp {
     height: 40px;
     width: 200px;
-    text-align: center;
     border-radius: 5px;
-    border: 1px inset blueviolet;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 10px;
+    border: 2px solid white;
+    background-color: #3c2e76;
 }
-.pinKeypadContainer{
+
+.pinKeypadContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
@@ -71,11 +77,28 @@ justify-content: center;
 }
 
 
-.keypadKeyCommon{
+.keypadKeyCommon {
     height: 40px;
-    width: 60px;
+    width: 70px;
     text-align: center;
     border-radius: 5px;
-    border: 1px inset blueviolet;    
+    border: 1px inset blueviolet;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: #ADD8E6;
 }
 
+.erase {
+    background-color: rgb(121, 183, 28);
+}
+
+
+.submit {
+    background-color: rgb(198, 198, 80);
+}
+
+.clear {
+    background-color: rgb(204, 41, 41);
+}
